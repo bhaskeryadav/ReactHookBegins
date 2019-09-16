@@ -3,6 +3,7 @@ import { SUCCESS } from "../../commons/constants";
 import { makeRestCall } from "../../commons/makeRestCall";
 
 const FETCH_MESSAGES = "FETCH_MESSAGES";
+const ADD_MESSAGE = "ADD_MESSAGE";
 
 const initialState = fromJS({
   messages: []
@@ -30,12 +31,16 @@ const mapResponseToHandler = (state, payload) => {
   return state.set("messages", List(messages));
 };
 
+const addMessageToState = (state, payload) =>
+  state.set("messages", List([payload, ...state.get("messages").toJS()]));
+
 export default function messageReducer(state = initialState, action) {
   const { type, payload } = action;
 
   const handlers = {
     [`${FETCH_MESSAGES}${SUCCESS}`]: state =>
-      mapResponseToHandler(state, payload)
+      mapResponseToHandler(state, payload),
+    [`${ADD_MESSAGE}`]: state => addMessageToState(state, payload)
   };
 
   console.log(action, handlers[type]);
