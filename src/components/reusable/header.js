@@ -1,11 +1,16 @@
 import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
-export const Header = props => {
-  return(
-    <div>
-      Header
-    </div>
-  )
+export default function Header() {
+  return (
+    <React.Fragment>
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6">Header</Typography>
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  );
 }
-
-export default Header;

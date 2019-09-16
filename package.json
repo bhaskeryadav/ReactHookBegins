@@ -7,9 +7,15 @@
   "version": "0.0.0",
   "dependencies": {
     "@material-ui/core": "latest",
+    "immutable": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest"
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest",
+    "socket.io": "latest",
+    "socket.io-client": "2.2.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
