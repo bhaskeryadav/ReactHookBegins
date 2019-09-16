@@ -6,7 +6,11 @@ const FETCH_MESSAGES = "FETCH_MESSAGES";
 const ADD_MESSAGE = "ADD_MESSAGE";
 
 const initialState = fromJS({
-  messages: []
+  messages: [],
+  blue: [],
+  yellow: [],
+  red: [],
+  brown: []
 });
 
 export const getMessages = () => {
@@ -19,14 +23,21 @@ export const getMessages = () => {
 };
 
 const mapResponseToHandler = (state, payload) => {
+  const typeColl = {
+    blue: [],
+    yellow: [],
+    red: [],
+    brown: []
+  };
   const messages = payload.results.map((d, index) => {
     let msg = {};
     msg.message = d.name;
     msg.type = d.eye_color;
     msg.id = index;
+    //typeColl[msg.type].push(msg);
     return msg;
   });
-  console.log("state >>>>>", state);
+  console.log("state >>>>>", state, typeColl);
 
   return state.set("messages", List(messages));
 };

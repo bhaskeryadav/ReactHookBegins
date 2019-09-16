@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages } from "../../reducers/api-consumers/messages";
-import Message from "../reusable/message";
+import Messages from "../reusable/messages";
 import getSocket from "../../commons/socketService";
 
 export const About = props => {
@@ -10,6 +10,7 @@ export const About = props => {
 
   if (messages.size === 0) dispatch(getMessages());
 
+  // To be added in the landing page
   useEffect(() => {
     console.log("calling use effect in about js");
     const sock = getSocket();
@@ -24,9 +25,7 @@ export const About = props => {
 
   return (
     <div>
-      {messages.map(msg => (
-        <Message key={msg.id} message={msg} />
-      ))}
+      <Messages messages={messages} />
     </div>
   );
 };
