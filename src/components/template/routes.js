@@ -1,22 +1,22 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import Home from "../screen/home";
-import About from "../screen/about";
+import Signup from "../screen/signup";
+import RedboxMessages from "../screen/redbox.messages";
 
 export const AppRouter = props => {
   return (
     <BrowserRouter>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Signup</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/messages">RedboxMessages</Link>
         </li>
       </ul>
       <hr />
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route exact path="/" component={Signup} />
+      <Route path="/messages" component={RedboxMessages} />
     </BrowserRouter>
   );
 };

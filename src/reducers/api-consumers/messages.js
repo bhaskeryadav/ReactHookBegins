@@ -16,28 +16,23 @@ const initialState = fromJS({
 export const getMessages = () => {
   console.log("making call...");
   return makeRestCall({
-    url: "https://swapi.co/api/people",
+    url: "https://onhir.sse.codesandbox.io/",
     method: "GET",
     actionType: FETCH_MESSAGES
   });
 };
 
-const mapResponseToHandler = (state, payload) => {
-  const typeColl = {
-    blue: [],
-    yellow: [],
-    red: [],
-    brown: []
-  };
-  const messages = payload.results.map((d, index) => {
-    let msg = {};
-    msg.message = d.name;
-    msg.type = d.eye_color;
-    msg.id = index;
-    //typeColl[msg.type].push(msg);
-    return msg;
+export const addMessage = (data, dispatch) => {
+  return dispatch({
+    type: "ADD_MESSAGE",
+    payload: data
   });
-  console.log("state >>>>>", state, typeColl);
+};
+
+const mapResponseToHandler = (state, payload) => {
+  console.log(payload);
+  const messages = payload;
+  console.log("state >>>>>", messages);
 
   return state.set("messages", List(messages));
 };
